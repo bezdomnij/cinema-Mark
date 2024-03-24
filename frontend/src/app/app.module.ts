@@ -7,19 +7,23 @@ import {ScreeningFormComponent} from './components/screening-form/screening-form
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { ScreeningListComponent } from './components/screening-list/screening-list.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
     AppComponent,
     ScreeningFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    ScreeningListComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        NgOptimizedImage
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

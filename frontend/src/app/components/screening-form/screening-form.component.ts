@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ScreeningService} from "../../service/screening.service";
 import {handleValidationErrors} from "../../utils/validation.handler";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-screening-form',
@@ -14,7 +15,8 @@ export class ScreeningFormComponent {
 
   constructor(
     private screeningService: ScreeningService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       title: ['', [Validators.required]],
@@ -28,13 +30,16 @@ export class ScreeningFormComponent {
     this.screeningService.saveScreening(this.form.value).subscribe({
       next: () => {
         console.log((this.form.value));
-        // this.form.reset()
+        this.form.reset()
       },
       error: err => {
         console.error(err);
         handleValidationErrors(err, this.form)
       },
-      complete: () => console.log('Complete submit')
+      complete: () => {
+        console.log('Complete submit');
+        this.router.navigate(['screenings']);
+      }
     })
   }
 }
