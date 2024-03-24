@@ -1,66 +1,62 @@
-<div class="container jumbotron">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()"
-        class="container">
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <div class="form-group">
-      <label for="screeningDate" class="form-label">Screening TimeDate</label>
-      <input
-        type="datetime-local"
-        class="form-control"
-        id="screeningDate"
-        formControlName="screeningDate"
-      >
-      <small
-        *ngIf="form.get('screeningDate')?.errors?.['serverError']"
-        class="text-danger"
-      >
-        {{form.get('screeningDate')?.errors?.['serverError']}}
-      </small>
-
-    </div>
-
-    <div class="form-group">
+    <div class="mb-3">
       <label for="title" class="form-label">Title</label>
-      <input type="text" class="form-control" id="title"
-             formControlName="title"
-      >
+      <input type="email" class="form-control" id="title"
+             formControlName="title">
       <small
-        *ngIf="form.get('title')?.errors?.['serverError']"
-        class="text-danger"
+        *ngIf="form.get('title')?.invalid
+          && form.get('title')?.touched
+          && !form.get('title')?.errors?.['serverError']"
+
+        [ngClass]="{'text-danger': (form.get('title')?.invalid && form.get('title')?.touched)
+          || (form.get('title')?.errors?.['serverError'])}"
       >
-        {{form.get('title')?.errors?.['serverError']}}
+        Please enter a title
       </small>
     </div>
 
-    <div class="form-group">
-      <label class="form-control" for="totalSeats">Total seats available</label>
-      <input type="number"
-             class="form-control"
-             id="totalSeats"
-            formControlName="totalSeats"
-      >
+    <div class="mb-3">
+      <label for="screeningDate" class="form-label">Screening Date</label>
+      <input type="datetime-local" class="form-control" id="screeningDate"
+             formControlName="screeningDate">
       <small
-        *ngIf="form.get('totalSeats')?.errors?.['serverError']"
-        class="text-danger"
+        *ngIf="form.get('screeningDate')?.invalid
+          && form.get('screeningDate')?.touched
+          && !form.get('screeningDate')?.errors?.['serverError']"
+
+        [ngClass]="{'text-danger': (form.get('screeningDate')?.invalid && form.get('screeningDate')?.touched)
+          || (form.get('screeningDate')?.errors?.['serverError'])}"
       >
-        {{form.get('totalSeats')?.errors?.['serverError']}}
+        Please enter a screening date
+      </small>
+    </div>
+
+    <div class="mb-3">
+      <label for="totalSeats" class="form-label">Total seats</label>
+      <input type="number" class="form-control" id="totalSeats"
+             formControlName="totalSeats">
+      <small
+        *ngIf="form.get('totalSeats')?.invalid
+          && form.get('totalSeats')?.touched
+          && !form.get('totalSeats')?.errors?.['serverError']"
+
+        [ngClass]="{'text-danger': (form.get('totalSeats')?.invalid && form.get('totalSeats')?.touched)
+          || (form.get('totalSeats')?.errors?.['serverError'])}"
+      >
+        Please enter a positive total seat-count
       </small>
 
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <label for="pictureUrl" class="form-label">Picture Url</label>
       <input type="text" class="form-control" id="pictureUrl"
-      formControlName="pictureUrl">
-      <small
-        *ngIf="form.get('pictureUrl')?.errors?.['serverError']"
-        class="text-danger"
-      >
-        {{form.get('pictureUrl')?.errors?.['serverError']}}
-      </small>
+             formControlName="pictureUrl">
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
 
+    <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

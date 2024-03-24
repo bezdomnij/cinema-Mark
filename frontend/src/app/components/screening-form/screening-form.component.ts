@@ -19,7 +19,7 @@ export class ScreeningFormComponent {
     this.form = this.formBuilder.group({
       title: ['', [Validators.required]],
       screeningDate: ['', [Validators.required]],
-      totalSeats: [0, [Validators.required]],
+      totalSeats: [0, [Validators.required, Validators.min(1)]],
       pictureUrl: ['']
     })
   }
@@ -34,7 +34,7 @@ export class ScreeningFormComponent {
         console.error(err);
         handleValidationErrors(err, this.form)
       },
-      complete: () => console.log('Completed submit, probably')
+      complete: () => console.log('Complete submit')
     })
   }
 }

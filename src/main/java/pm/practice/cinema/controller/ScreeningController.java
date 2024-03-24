@@ -33,7 +33,7 @@ public class ScreeningController {
     @PostMapping
     public ResponseEntity<Void> saveScreening(@RequestBody @Valid ScreeningCreateCommand command) {
         screeningService.saveScreening(command);
-        log.info("New screening added, Http Request: POST, /api/screenings, BODY: " + command);
+        log.info("New screening added, Http Request: POST, /api/screenings, BODY:\n" + command);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
