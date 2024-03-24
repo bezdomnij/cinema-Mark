@@ -7,10 +7,12 @@ server:
       force: true
 
 spring:
+  application:
+      name: cinema
   datasource:
-    url: jdbc:mysql://localhost:3306/cinema?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
-    username: root
-    password: test1234
+    url: jdbc:mysql://localhost:3306/cinema_m?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: admin
+    password: beke1648
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

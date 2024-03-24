@@ -1,1 +1,66 @@
-<p>screening-form works!</p>
+<div class="container jumbotron">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()"
+        class="container">
+
+    <div class="form-group">
+      <label for="screeningDate" class="form-label">Screening TimeDate</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="screeningDate"
+        formControlName="screeningDate"
+      >
+      <small
+        *ngIf="form.get('screeningDate')?.errors?.['serverError']"
+        class="text-danger"
+      >
+        {{form.get('screeningDate')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+
+    <div class="form-group">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title"
+             formControlName="title"
+      >
+      <small
+        *ngIf="form.get('title')?.errors?.['serverError']"
+        class="text-danger"
+      >
+        {{form.get('title')?.errors?.['serverError']}}
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label class="form-control" for="totalSeats">Total seats available</label>
+      <input type="number"
+             class="form-control"
+             id="totalSeats"
+            formControlName="totalSeats"
+      >
+      <small
+        *ngIf="form.get('totalSeats')?.errors?.['serverError']"
+        class="text-danger"
+      >
+        {{form.get('totalSeats')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+
+    <div class="form-group">
+      <label for="pictureUrl" class="form-label">Picture Url</label>
+      <input type="text" class="form-control" id="pictureUrl"
+      formControlName="pictureUrl">
+      <small
+        *ngIf="form.get('pictureUrl')?.errors?.['serverError']"
+        class="text-danger"
+      >
+        {{form.get('pictureUrl')?.errors?.['serverError']}}
+      </small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+</div>

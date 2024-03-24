@@ -25,7 +25,7 @@ public class Screening {
     private LocalDateTime screeningDate;
 
     @Column
-    private Integer seats;
+    private Integer totalSeats;
 
     @Column
     private String pictureUrl;

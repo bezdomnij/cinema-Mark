@@ -12,7 +12,7 @@ import pm.practice.cinema.repository.ScreeningRepository;
 @Transactional
 public class ScreeningService {
 
-    private ScreeningRepository screeningRepository;
+    private final ScreeningRepository screeningRepository;
 
     @Autowired
     public ScreeningService(ScreeningRepository screeningRepository) {
@@ -28,7 +28,7 @@ public class ScreeningService {
         Screening screening = new Screening();
         screening.setTitle(command.getTitle());
         screening.setScreeningDate(command.getScreeningDate());
-        screening.setSeats(command.getSeats());
+        screening.setTotalSeats(command.getTotalSeats());
         screening.setPictureUrl(command.getPictureUrl());
         return screening;
     }

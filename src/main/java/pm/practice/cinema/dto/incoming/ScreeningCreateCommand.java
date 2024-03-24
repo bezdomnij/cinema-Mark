@@ -11,7 +11,7 @@ public class ScreeningCreateCommand {
 
     private String title;
     private LocalDateTime screeningDate;
-    private Integer seats;
+    private Integer totalSeats;
     private String pictureUrl;
 
 }

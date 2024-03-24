@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ScreeningCommandModel} from "../models/screening-command.model";
 
@@ -11,7 +11,8 @@ export class ScreeningService {
 
   constructor(
     private http: HttpClient,
-  ) { }
+  ) {
+  }
 
   saveScreening(data: ScreeningCommandModel) {
     return this.http.post(BASE_URL, data)
