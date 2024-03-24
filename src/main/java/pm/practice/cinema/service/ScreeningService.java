@@ -10,6 +10,7 @@ import pm.practice.cinema.dto.outgoing.ScreeningListItemDto;
 import pm.practice.cinema.repository.ScreeningRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -39,5 +40,10 @@ public class ScreeningService {
     public List<ScreeningListItemDto> getScreeningList() {
         List<Screening> screeningList = screeningRepository.findAllByOrderByScreeningDateAsc();
         return screeningList.stream().map(ScreeningListItemDto::new).toList();
+    }
+
+    public Screening getScreeningById(Long screeningId) {
+        Optional<Screening> screening = screeningRepository.findById(screeningId);
+        return screening.orElse(null);
     }
 }

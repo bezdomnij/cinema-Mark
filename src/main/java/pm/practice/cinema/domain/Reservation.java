@@ -25,4 +25,9 @@ public class Reservation {
     @JoinColumn(name = "screening_id")
     private Screening screening;
 
+    public Reservation(String moviegoerName, Integer seatCountNeeded, Screening screening) {
+        this.moviegoerName = moviegoerName;
+        this.seatCountNeeded = seatCountNeeded;
+        this.screening = screening;
+    }
 }
