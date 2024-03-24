@@ -15,7 +15,7 @@ public class ScreeningListItemDto {
     private Long id;
     private String imageUrl;
     private String title;
-    @JsonFormat(pattern = "yyy-MM-dd hh:mm")
+    @JsonFormat(pattern = "yyy-MM-dd HH:mm")
     private LocalDateTime screeningTime;
     private Integer totalSeats;
     private Integer freeSeats;

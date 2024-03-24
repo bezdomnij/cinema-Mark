@@ -9,13 +9,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { ScreeningListComponent } from './components/screening-list/screening-list.component';
 import {NgOptimizedImage} from "@angular/common";
+import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ScreeningFormComponent,
     NavbarComponent,
-    ScreeningListComponent
+    ScreeningListComponent,
+    ReservationFormComponent
   ],
     imports: [
         BrowserModule,

@@ -42,6 +42,9 @@ public class ScreeningController {
 
     @GetMapping
     public ResponseEntity<List<ScreeningListItemDto>> getScreeningList() {
-        return new ResponseEntity<>(screeningService.getScreeningList(), HttpStatus.OK);
+        ResponseEntity<List<ScreeningListItemDto>> response =
+                new ResponseEntity<>(screeningService.getScreeningList(), HttpStatus.OK);
+        log.info("Screenings page requested, Http Request: GET. /api/screenings\n");
+        return response;
     }
 }
