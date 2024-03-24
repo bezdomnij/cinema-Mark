@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-public class ScreeningCreateCommand {
+public class ScreeningCreateCommandDto {
 
     private String title;
     @Future

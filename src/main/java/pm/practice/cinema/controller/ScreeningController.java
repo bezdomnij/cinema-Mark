@@ -7,9 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import pm.practice.cinema.dto.incoming.ScreeningCreateCommand;
+import pm.practice.cinema.dto.incoming.ScreeningCreateCommandDto;
+import pm.practice.cinema.dto.outgoing.ScreeningListItemDto;
 import pm.practice.cinema.service.ScreeningService;
 import pm.practice.cinema.validator.ScreeningCreateCommandValidator;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/screenings")
@@ -25,15 +28,20 @@ public class ScreeningController {
         this.screeningCreateCommandValidator = screeningCreateCommandValidator;
     }
 
-    @InitBinder
+    @InitBinder("screeningCreateCommandValidator")
     protected void screeningBinder(WebDataBinder binder) {
         binder.addValidators(screeningCreateCommandValidator);
     }
 
     @PostMapping
-    public ResponseEntity<Void> saveScreening(@RequestBody @Valid ScreeningCreateCommand command) {
+    public ResponseEntity<Void> saveScreening(@RequestBody @Valid ScreeningCreateCommandDto command) {
         screeningService.saveScreening(command);
         log.info("New screening added, Http Request: POST, /api/screenings, BODY:\n" + command);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ScreeningListItemDto>> getScreeningList() {
+        return new ResponseEntity<>(screeningService.getScreeningList(), HttpStatus.OK);
     }
 }

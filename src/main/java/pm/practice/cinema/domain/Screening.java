@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,5 +30,8 @@ public class Screening {
 
     @Column(columnDefinition = "TEXT")
     private String pictureUrl;
+
+    @OneToMany(mappedBy = "screening")
+    private List<Reservation> reservations;
 
 }

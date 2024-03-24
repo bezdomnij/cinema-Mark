@@ -3,18 +3,18 @@ package pm.practice.cinema.validator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import pm.practice.cinema.dto.incoming.ScreeningCreateCommand;
+import pm.practice.cinema.dto.incoming.ScreeningCreateCommandDto;
 
 @Component
 public class ScreeningCreateCommandValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {
-        return ScreeningCreateCommand.class.equals(clazz);
+        return ScreeningCreateCommandDto.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        ScreeningCreateCommand command = (ScreeningCreateCommand) target;
+        ScreeningCreateCommandDto command = (ScreeningCreateCommandDto) target;
 
         if (command.getTitle() == null || command.getTitle().isBlank()) {
             errors.rejectValue("title", "screeningcreate.title.notgiven");
